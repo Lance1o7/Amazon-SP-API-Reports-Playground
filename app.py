@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, send_file
+from flask import Flask, render_template, request, redirect, url_for, jsonify, send_file, redirect
 from Service import createReportFromInput, getAllReportsFromInput, downloadReportFromInput
 import json
 
@@ -25,7 +25,7 @@ def getAllReports():
 def downloadReport():
     if request.method == 'POST':
         res = downloadReportFromInput(request.form)
-        return flask.redirect(res)
+        return redirect(res)
     return render_template('download.html')
 
 
