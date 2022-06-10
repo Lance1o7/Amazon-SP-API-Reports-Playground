@@ -109,7 +109,7 @@ def downloadReportFromInput(form):
 
         script_dir = os.path.dirname(__file__)
 
-        path = os.path.join(script_dir, 'static', filename+".json")
+        path = os.path.join('static', filename+".json")
 
         f = open(path, "w")
         credentials = dict(
