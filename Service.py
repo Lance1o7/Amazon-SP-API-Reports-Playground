@@ -106,12 +106,13 @@ def downloadReportFromInput(form):
         rolearn = form['rolearn']
         documentID = form['documentID']
         filename = hashlib.md5(documentID.encode('utf-8')).hexdigest()
-
+        print(filename)
         script_dir = os.path.dirname(__file__)
 
         path = os.path.join('static', filename+".json")
-
+        print("path is", path)
         f = open(path, "w")
+        print("File path is", path)
         credentials = dict(
             refresh_token=refreshtoken,
             lwa_app_id=appid,
