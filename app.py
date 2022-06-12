@@ -26,6 +26,7 @@ def downloadReport():
     if request.method == 'POST':
         res = downloadReportFromInput(request.form)
         return send_file(res, as_attachment=True)
+
     return render_template('download.html')
 
 
