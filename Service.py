@@ -123,6 +123,6 @@ def downloadReportFromInput(form):
         )
         res = Reports(credentials=credentials).get_report_document(documentID, decrypte=True, download=True, file=f)
         #print(res)
-        return path
+        return filename+".json"
     except:
         return "Something wrong. Please check your input."
