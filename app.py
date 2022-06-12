@@ -25,7 +25,7 @@ def getAllReports():
 def downloadReport():
     if request.method == 'POST':
         res = downloadReportFromInput(request.form)
-        return flask.redirect(res)
+        return send_file(res, as_attachment=True)
     return render_template('download.html')
 
 
