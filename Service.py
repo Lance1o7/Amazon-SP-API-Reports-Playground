@@ -106,10 +106,7 @@ def downloadReportFromInput(form):
         rolearn = form['rolearn']
         documentID = form['documentID']
         filename = hashlib.md5(documentID.encode('utf-8')).hexdigest()
-        print(filename)
-        script_dir = os.path.dirname(__file__)
-
-        path = os.path.join('static', filename+".json")
+        path = os.path.join(os.path.dirname(__file__), filename+".json")
         print("path is", path)
         f = open(path, "w")
         print("File path is", path)
@@ -122,7 +119,7 @@ def downloadReportFromInput(form):
             role_arn=rolearn,
         )
         res = Reports(credentials=credentials).get_report_document(documentID, decrypte=True, download=True, file=f)
-        print(res)
+        #print(res)
         return path
     except:
         return "Something wrong. Please check your input."
