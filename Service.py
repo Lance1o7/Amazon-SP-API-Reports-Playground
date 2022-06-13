@@ -4,6 +4,7 @@ from datetime import date, datetime, timedelta
 import hashlib
 import os
 
+
 def createReportFromInput(form):
     try:
         refreshtoken = form['refreshtoken']
@@ -54,10 +55,11 @@ def createReportFromInput(form):
                 marketplaceIds=[
                     "ATVPDKIKX0DER"
                 ])
-            #print(res)
+            # print(res)
             return res.payload
     except:
         return "Please check your input data."
+
 
 def getAllReportsFromInput(form):
     try:
@@ -79,8 +81,9 @@ def getAllReportsFromInput(form):
             role_arn=rolearn,
         )
 
-        res = Reports(credentials=credentials).get_reports(reportTypes=report_types, processingStatuses=processing_status)
-        #print(res)
+        res = Reports(credentials=credentials).get_reports(reportTypes=report_types,
+                                                           processingStatuses=processing_status)
+        # print(res)
         return res.payload
 
     except:
@@ -93,6 +96,7 @@ def downloadAndDecryptSPE(documentID):
     print(res)
     f.close()
 
+
 def downloadReportFromInput(form):
     try:
         refreshtoken = form['refreshtoken']
@@ -103,7 +107,7 @@ def downloadReportFromInput(form):
         rolearn = form['rolearn']
         documentID = form['documentID']
         filename = hashlib.md5(documentID.encode('utf-8')).hexdigest()
-        path = os.path.join(os.path.dirname(__file__),'static', filename+".json")
+        path = os.path.join(os.path.dirname(__file__), 'static', filename + ".json")
         f = open(path, "w")
         credentials = dict(
             refresh_token=refreshtoken,

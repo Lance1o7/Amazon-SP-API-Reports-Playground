@@ -1,20 +1,19 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, send_file
+from flask import Flask, render_template, request, send_file
 from Service import createReportFromInput, getAllReportsFromInput, downloadReportFromInput
-import json
 
 app = Flask(__name__)
 
 
 @app.route('/create', methods=['POST', 'GET'])
-def createReport():
+def create_report():
     if request.method == 'POST':
-        res = createReportFromInput(request.form)
+        createReportFromInput(request.form)
         return "Successfully create the report."
     return render_template('create.html')
 
 
 @app.route('/get', methods=['POST', 'GET'])
-def getAllReports():
+def get_all_reports():
     if request.method == 'POST':
         res = getAllReportsFromInput(request.form)
         return res
@@ -22,7 +21,7 @@ def getAllReports():
 
 
 @app.route('/download', methods=['POST', 'GET'])
-def downloadReport():
+def download_report():
     if request.method == 'POST':
         res = downloadReportFromInput(request.form)
         return send_file(res, as_attachment=True)
