@@ -12,8 +12,6 @@ def createReportFromInput(form):
         awssecret = form['awssecret']
         awsaccess = form['awsaccess']
         rolearn = form['rolearn']
-
-
         reportPeriod = form['reportPeriod']
         distributorView = form['distributorView']
         sellingProgram = form['sellingProgram']
@@ -37,7 +35,6 @@ def createReportFromInput(form):
         )
 
         if reportType == "1":
-            print("yes")
             res = Reports(credentials=credentials).create_report(
                 reportOptions=reportOptions,
                 reportType=ReportType.GET_VENDOR_SALES_REPORT,
